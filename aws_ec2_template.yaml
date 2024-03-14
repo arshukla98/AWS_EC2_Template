@@ -63,6 +63,7 @@ spec:
           ui:autofocus: true
           enum:
             - t2.micro
+            - t2.small
 
         region:
           title: AWS Region
@@ -80,12 +81,12 @@ spec:
 
   # Steps that the template will execute in order
   steps:
-    - id: register
-      name: Register
-      action: catalog:register
-      input:
-        repoContentsUrl: https://${{ parameters.repoUrl | parseRepoUrl | pick('host') }}/${{ parameters.repoUrl | parseRepoUrl | pick('owner') }}/${{ parameters.repoUrl | parseRepoUrl | pick('repo') }}/blob/main
-        catalogInfoPath: '/catalog-info.yaml'
+    # - id: register
+    #   name: Register
+    #   action: catalog:register
+    #   input:
+    #     repoContentsUrl: https://${{ parameters.repoUrl | parseRepoUrl | pick('host') }}/${{ parameters.repoUrl | parseRepoUrl | pick('owner') }}/${{ parameters.repoUrl | parseRepoUrl | pick('repo') }}/blob/main
+    #     catalogInfoPath: '/catalog-info.yaml'
 
     # Trigger a GitHub Action to set up the EKS cluster
     - id: github-action
